@@ -1,0 +1,26 @@
+name: almena-status
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        NEXT_PUBLIC_STATUS_WEB_URL: ${NEXT_PUBLIC_STATUS_WEB_URL:-https://status.almena.id}
+    image: almena-status:dev
+    restart: unless-stopped
+    ports:
+      - "${STATUS_WEB_PORT:-3200}:3000"
+    environment:
+      STATUS_PROBE_INTERVAL_SECONDS: ${STATUS_PROBE_INTERVAL_SECONDS:-60}
+      STATUS_PROBE_TIMEOUT_MS: ${STATUS_PROBE_TIMEOUT_MS:-10000}
+      STATUS_SLOW_MS: ${STATUS_SLOW_MS:-2000}
+    volumes:
+      # What is watched and the incidents: edit them here, no rebuild or
+      # restart (a single-file mount follows the file only while it is edited
+      # in place: restart if an editor replaces it).
+      - ./resources.json:/app/resources.json:ro
+      - ./incidents:/app/incidents:ro
+      - status-data:/data
+
+volumes:
+  status-data:

@@ -1,0 +1,103 @@
+# https://taskfile.dev
+version: "3"
+
+dotenv: [".env"]
+
+vars:
+  IMAGE: almena-status:dev
+  PORT: '{{.STATUS_WEB_PORT | default "3200"}}'
+
+tasks:
+  default:
+    desc: List available tasks
+    cmds:
+      - task --list
+    silent: true
+
+  init:
+    desc: Create .env from .env.example (an existing .env is left untouched)
+    cmds:
+      - cp .env.example .env
+    status:
+      - test -f .env
+
+  install:
+    desc: Install the dependencies from package-lock.json
+    cmds:
+      - npm ci
+    sources:
+      - package.json
+      - package-lock.json
+    generates:
+      - node_modules/.package-lock.json
+
+  dev:
+    desc: Run the status page locally with hot reload (it starts probing at once)
+    deps: [install]
+    cmds:
+      - npx next dev --port {{.PORT}}
+
+  build:
+    desc: Build the production bundle (.next/standalone)
+    deps: [install]
+    cmds:
+      - npm run build
+
+  start:
+    desc: Serve the production build locally (after task build)
+    cmds:
+      - npx next start --port {{.PORT}}
+
+  lint:
+    desc: Lint and type-check
+    deps: [install]
+    cmds:
+      - npm run lint
+      # Route types (LayoutProps, PageProps…) live in .next/types: generate them first.
+      - npx next typegen
+      - npx tsc --noEmit
+
+  fmt:
+    desc: Apply ESLint's automatic fixes
+    deps: [install]
+    cmds:
+      - npx eslint --fix
+
+  check:
+    desc: Everything that must pass before finishing a change (lint + production build)
+    cmds:
+      - task: lint
+      - task: build
+
+  docker:build:
+    desc: Build the Docker image
+    cmds:
+      - docker compose build
+
+  up:
+    desc: Start the status page in Docker (detached) and wait until it is healthy
+    cmds:
+      - docker compose up --build --detach --wait
+
+  down:
+    desc: Stop and remove the Docker containers
+    cmds:
+      - docker compose down
+
+  logs:
+    desc: Follow the status page's container logs
+    cmds:
+      - docker compose logs --follow web
+
+  health:
+    desc: Query the running status page's health endpoint
+    cmds:
+      - curl --fail --silent --show-error http://localhost:{{.PORT}}/health
+      - echo
+    silent: true
+
+  clean:
+    desc: Remove node_modules, the build output, the local history and the local Docker image
+    cmds:
+      - rm -rf node_modules .next data
+      - docker image rm -f {{.IMAGE}}

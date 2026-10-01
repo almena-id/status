@@ -1,0 +1,68 @@
+{
+  "resources": [
+    {
+      "id": "identity",
+      "name": "Identity domain",
+      "type": "identity",
+      "operator": "Almena",
+      "description": "Resolution of did:web identities under almena.id",
+      "url": "https://almena.id",
+      "probe": "https://almena.id/.well-known/did.json"
+    },
+    {
+      "id": "mediator",
+      "name": "Almena Mediator",
+      "type": "mediator",
+      "operator": "Almena",
+      "description": "Public DIDComm mediator, the network's default",
+      "url": "https://mediator.almena.id",
+      "probe": "https://mediator.almena.id/health"
+    },
+    {
+      "id": "api",
+      "name": "Almena API",
+      "type": "api",
+      "operator": "Almena",
+      "description": "The platform's API and its database",
+      "url": "https://api.almena.id",
+      "probe": "https://api.almena.id/health/ready"
+    },
+    {
+      "id": "agent",
+      "name": "Almena Agent",
+      "type": "agent",
+      "operator": "Almena",
+      "description": "The network's assistant",
+      "url": "https://agent.almena.id",
+      "probe": "https://agent.almena.id/health"
+    },
+    {
+      "id": "registry",
+      "name": "Registry",
+      "type": "portal",
+      "operator": "Almena",
+      "description": "Portal for issuers and verifiers",
+      "url": "https://registry.almena.id",
+      "probe": "https://registry.almena.id/health"
+    },
+    {
+      "id": "catalog",
+      "name": "Catalog",
+      "type": "portal",
+      "operator": "Almena",
+      "description": "Public catalog of credential services",
+      "url": "https://catalog.almena.id",
+      "probe": "https://catalog.almena.id/health"
+    },
+    {
+      "id": "website",
+      "name": "Website",
+      "type": "portal",
+      "operator": "Almena",
+      "description": "almena.id",
+      "url": "https://almena.id",
+      "probe": "https://almena.id/health",
+      "follow": true
+    }
+  ]
+}
