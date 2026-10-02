@@ -55,6 +55,15 @@
       "probe": "https://catalog.almena.id/health"
     },
     {
+      "id": "docs",
+      "name": "Documentation",
+      "type": "portal",
+      "operator": "Almena",
+      "description": "The platform's documentation",
+      "url": "https://docs.almena.id",
+      "probe": "https://docs.almena.id/health"
+    },
+    {
       "id": "website",
       "name": "Website",
       "type": "portal",
