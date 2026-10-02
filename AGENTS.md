@@ -51,8 +51,12 @@ finishing.
   zone.
 - Always dark: `<html class="dark">`, no theme selector; `app/globals.css`
   has only the dark palette.
-- Cyan is the status page's identity (the catalog is blue, the registry and
-  the wallet orange), leaving the states their colours (`--state-*`: green,
+- Cyan `#3fe0ff` is the status page's identity: `--primary` and `--ring`,
+  `--brand-strong` `#8aecff` (hover), the mark (`Logo`, `app/icon.svg`); what
+  sits on it is dark (`--primary-foreground` `#090c13`). The identity colours across Almena: status cyan `#3fe0ff`, catalog blue
+  `#2563eb`, registry green `#1f9d55`, mediator blue `#2f6fed`, landing
+  orange `#eb7229`, docu yellow `#f2b705`, the wallet the person's choice (orange by default).
+  It leaves the states their colours (`--state-*`: green,
   amber, orange, red, blue). `app/globals.css`
   holds only the theme and is the only place a colour is written
   (`app/icon.svg` aside).
