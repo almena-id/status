@@ -18,7 +18,8 @@ ENV NEXT_PUBLIC_STATUS_WEB_URL=$NEXT_PUBLIC_STATUS_WEB_URL
 # year.month.sequence, set by the image workflow; /health reports it.
 ARG ALMENA_VERSION=dev
 ENV ALMENA_VERSION=$ALMENA_VERSION
-RUN npm run build
+# public/ may be empty, and git does not keep empty folders: make sure it exists.
+RUN mkdir -p public && npm run build
 
 # ---- runtime ----
 FROM node:24-alpine AS runtime
