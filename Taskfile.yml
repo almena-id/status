@@ -111,3 +111,15 @@ tasks:
     cmds:
       - rm -rf node_modules .next data
       - docker image rm -f {{.IMAGE}}
+
+  clean:all:
+    desc: Leave the repository as cloned — clean, plus the containers and their volumes (production's included), .env, the generated types, coverage output and the Task checksums
+    prompt: Remove the containers and volumes (the probe history) and .env? They are recreated by `task init` and `task up`.
+    cmds:
+      # By the project's name, away from compose.yml: it needs no .env, so a
+      # second run, or one after .env is gone, still works.
+      - cd / && docker compose --project-name almena-status down --volumes --remove-orphans
+      - cd / && docker compose --project-name almena-status-prod down --volumes --remove-orphans
+      - task: clean
+      - rm -rf .task coverage out build next-env.d.ts *.tsbuildinfo
+      - find . -maxdepth 1 -name '.env*' ! -name '.env.example' -exec rm -f {} +
