@@ -2,6 +2,11 @@
 # whenever something is merged into main, and publishes it to GitHub Container
 # Registry as ghcr.io/almena-id/status.
 #
+# The targets are Linux x86_64, macOS Apple silicon and Windows x86_64. An
+# image is always Linux inside (Docker Desktop runs it in a Linux VM on macOS
+# and Windows), so the two architectures cover them: linux/amd64 for Linux
+# and Windows, linux/arm64 for macOS.
+#
 # Versions are year.month.sequence (e.g. 2026.10.1), as in the mediator: the
 # sequence starts at 1 each month and goes up by one per publication. It is
 # worked out from the git tags v<year>.<month>.<n>, and the tag for the new
