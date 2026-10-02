@@ -17,12 +17,14 @@ To run the production build in Docker instead:
 
 ```bash
 task up      # builds the image and starts it
-task health  # {"status":"ok"}
+task health  # {"status":"ok","version":"dev"}
 ```
+
+Every merge into `main` publishes the image `ghcr.io/almena-id/status` (amd64 and arm64) with a `year.month.sequence` version (e.g. `2026.10.1`, the sequence restarting each month), also tagged `latest` and `sha-<commit>`; the commit gets the git tag `v<version>`. Run it with `config/` and `incidents/` mounted over `/app/config` and `/app/incidents`, and a volume on `/data`, as [compose.yml](compose.yml) does.
 
 ## What is watched
 
-[resources.json](resources.json), read on every use (Docker mounts it): adding a service, Almena's or a third party's, is adding an entry.
+[config/resources.json](config/resources.json), read on every use (Docker mounts the `config` folder): adding a service, Almena's or a third party's, is adding an entry.
 
 ```json
 {
@@ -60,7 +62,7 @@ Read from the environment or `.env`; [.env.example](.env.example) explains every
 | `STATUS_PROBE_INTERVAL_SECONDS` | `60` | Seconds between two rounds of probes |
 | `STATUS_PROBE_TIMEOUT_MS` | `10000` | A probe slower than this fails |
 | `STATUS_SLOW_MS` | `2000` | A probe slower than this is degraded |
-| `STATUS_RESOURCES_FILE` | `./resources.json` | What is watched |
+| `STATUS_RESOURCES_FILE` | `./config/resources.json` | What is watched |
 | `STATUS_DATA_DIR` | `./data` (`/data` in Docker) | Where the history (SQLite) is kept |
 | `STATUS_INCIDENTS_DIR` | `./incidents` | Where the incidents are read from |
 
@@ -71,7 +73,7 @@ Read from the environment or `.env`; [.env.example](.env.example) explains every
 | `GET /` | The status: overall, each service with its 90 days, ongoing and recent incidents; `?type=` filters |
 | `GET /history` | Every incident of the last 90 days |
 | `GET /api/status.json` | The same report as JSON; `?type=` filters |
-| `GET /health` | Liveness, used by the Docker health check |
+| `GET /health` | Liveness and the running version, used by the Docker health check |
 
 ## Development
 

@@ -11,7 +11,7 @@ request; in Docker it is mounted read-only). Remove a file to unpublish it.
 ---
 title: Messages are not being delivered
 impact: major             # minor | major | maintenance
-components: mediator, api # resource ids, from ../resources.json
+components: mediator, api # resource ids, from ../config/resources.json
 starts: 2026-10-01T10:00:00Z
 ends: 2026-10-01T11:20:00Z # when it was resolved; leave it out while open
 ---
@@ -24,7 +24,7 @@ The mediator cannot reach its storage. We are looking into it.
 ```
 
 - `components` are the `id`s of the affected resources in
-  [resources.json](../resources.json).
+  [config/resources.json](../config/resources.json).
 - `impact` decides how the resources named in `components` are shown while
   it is open: `minor` as degraded, `major` as an outage, `maintenance` as
   maintenance.

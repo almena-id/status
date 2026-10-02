@@ -13,7 +13,7 @@ export type ResourceType = (typeof types)[number];
 export const isType = (value: unknown): value is ResourceType =>
   typeof value === "string" && (types as readonly string[]).includes(value);
 
-/** A resource the status page watches: one entry of resources.json. */
+/** A resource the status page watches: one entry of config/resources.json. */
 export type Resource = {
   /** Stable id: the key of its samples and of incidents' `components`. */
   id: string;
@@ -30,7 +30,7 @@ export type Resource = {
   follow: boolean;
 };
 
-const file = () => process.env.STATUS_RESOURCES_FILE ?? path.join(process.cwd(), "resources.json");
+const file = () => process.env.STATUS_RESOURCES_FILE ?? path.join(process.cwd(), "config", "resources.json");
 
 const text = (value: unknown) => (typeof value === "string" && value.trim() ? value.trim() : null);
 
@@ -45,7 +45,7 @@ const httpUrl = (value: unknown) => {
 };
 
 /**
- * Every resource in resources.json (`STATUS_RESOURCES_FILE`), read on each
+ * Every resource in config/resources.json (`STATUS_RESOURCES_FILE`), read on each
  * use: adding a third party's resource needs no restart. An entry missing a
  * field, of an unknown type or with a repeated id is skipped and logged.
  */

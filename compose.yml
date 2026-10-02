@@ -16,9 +16,8 @@ services:
       STATUS_SLOW_MS: ${STATUS_SLOW_MS:-2000}
     volumes:
       # What is watched and the incidents: edit them here, no rebuild or
-      # restart (a single-file mount follows the file only while it is edited
-      # in place: restart if an editor replaces it).
-      - ./resources.json:/app/resources.json:ro
+      # restart.
+      - ./config:/app/config:ro
       - ./incidents:/app/incidents:ro
       - status-data:/data
 
