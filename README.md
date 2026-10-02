@@ -83,6 +83,7 @@ Read from the environment or `.env`; [.env.example](.env.example) explains every
 | `GET /history` | Every incident of the last 90 days |
 | `GET /api/status.json` | The same report as JSON; `?type=` filters |
 | `GET /health` | Liveness and the running version, used by the Docker health check |
+| `GET /.well-known/security.txt` | Where to report a vulnerability ([RFC 9116](https://www.rfc-editor.org/rfc/rfc9116)): this repository's private advisories; `Expires` stays 180 days ahead |
 
 ## Development
 

@@ -45,6 +45,7 @@ finishing.
 - `/api/status.json` is public (CORS `*`): keep its shape stable, it is
   what anything built on the status later will read.
 - `app/health/route.ts` is the Docker health check: keep it dependency-free.
+- `app/.well-known/security.txt/route.ts`: RFC 9116, this repository's advisories.
 - `output: "standalone"` in `next.config.ts` is what the Dockerfile ships.
 - Every user-facing text is in `app/copy.ts`, in English: no language
   selector. Times are shown in UTC: the server does not know the visitor's
