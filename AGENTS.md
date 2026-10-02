@@ -22,7 +22,7 @@ finishing.
   keeps its history in its own SQLite (`node:sqlite`, `STATUS_DATA_DIR`). Never
   make it read the API, its database or anything else of the platform; it is
   meant to run away from it (another host or provider).
-- What is watched is data, not code: `resources.json`
+- What is watched is data, not code: `config/resources.json`
   (`STATUS_RESOURCES_FILE`), read on every use. Each resource has an id, a
   name, a type, its operator (Almena, or a third party that provides it for
   public use, e.g. a mediator), a description, its public `url` (shown) and

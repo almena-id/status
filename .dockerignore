@@ -10,3 +10,4 @@ Dockerfile
 compose.yml
 Taskfile.yml
 data
+.github
