@@ -6,6 +6,10 @@ request; in Docker it is mounted read-only). Remove a file to unpublish it.
 
 - `<id>.md` — the incident, in English. The id is the file name: lowercase
   letters, digits and hyphens (`2026-10-01-mediator-down`).
+- Start from a template: copy [TEMPLATE-incident.md](TEMPLATE-incident.md) or
+  [TEMPLATE-maintenance.md](TEMPLATE-maintenance.md) to `<id>.md` and fill it
+  in. The templates themselves are never published (their names are not
+  lowercase).
 
 ```markdown
 ---

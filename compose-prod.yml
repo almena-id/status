@@ -1,0 +1,27 @@
+# Production: the image published by the Docker image workflow
+# (ghcr.io/almena-id/status:latest), pulled on every start. Everything is set
+# here, nothing is read from .env or the environment: change the values in
+# this file. `task prod:up` starts it.
+
+name: almena-status-prod
+
+services:
+  web:
+    image: ghcr.io/almena-id/status:latest
+    pull_policy: always
+    restart: unless-stopped
+    ports:
+      - "3200:3000"
+    environment:
+      STATUS_PROBE_INTERVAL_SECONDS: "60"
+      STATUS_PROBE_TIMEOUT_MS: "10000"
+      STATUS_SLOW_MS: "2000"
+    volumes:
+      # What is watched and the incidents, from this checkout: edit them
+      # here, no restart (the image carries the copies it was built with).
+      - ./config:/app/config:ro
+      - ./incidents:/app/incidents:ro
+      - status-data:/data
+
+volumes:
+  status-data:

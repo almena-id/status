@@ -11,3 +11,4 @@ compose.yml
 Taskfile.yml
 data
 .github
+compose-prod.yml
