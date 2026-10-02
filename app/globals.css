@@ -2,7 +2,7 @@
  * Almena Status — the theme. Components are shadcn/ui (app/components/ui)
  * styled with Tailwind; this file gives them the Almena palette through
  * shadcn's variables. The page is always dark. The greys are the wallet's and
- * the registry's; the brand is violet, the status page's own identity (the
+ * the registry's; the brand is cyan, the status page's own identity (the
  * catalog is blue, the registry and the wallet orange), leaving green, amber
  * and red to the states. This file is the only place a colour is written.
  */
@@ -26,8 +26,9 @@
   --card-foreground: #f4f4f6;
   --popover: #1f2127;
   --popover-foreground: #f4f4f6;
-  --primary: #8b5cf6;
-  --primary-foreground: #ffffff;
+  --primary: #3fe0ff;
+  /* Cyan is light: what sits on it is dark. */
+  --primary-foreground: #090c13;
   --secondary: #0b0c0e;
   --secondary-foreground: #f4f4f6;
   --muted: #0b0c0e;
@@ -37,12 +38,12 @@
   --destructive: #ff6b5e;
   --border: rgba(255, 255, 255, 0.09);
   --input: rgba(255, 255, 255, 0.16);
-  --ring: #8b5cf6;
+  --ring: #3fe0ff;
 
   /* Almena's own, beyond shadcn's set. */
-  --brand-strong: #a78bfa;
-  --brand-soft: rgba(139, 92, 246, 0.16);
-  --brand-glow: rgba(139, 92, 246, 0.2);
+  --brand-strong: #8aecff;
+  --brand-soft: rgba(63, 224, 255, 0.14);
+  --brand-glow: rgba(63, 224, 255, 0.14);
   --destructive-soft: rgba(255, 107, 94, 0.16);
   --faint: rgba(244, 244, 246, 0.4);
   --sunk: #0b0c0e;
@@ -63,8 +64,10 @@
 }
 
 @theme inline {
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, system-ui, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* Set by next/font in app/layout.tsx. */
+  --font-brand: var(--font-chakra-petch), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -123,6 +126,13 @@
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Headings in the brand's typeface. */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-brand);
   }
 }
 

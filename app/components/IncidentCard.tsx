@@ -50,7 +50,7 @@ export function IncidentCard({
                 <li key={update.at} className="grid gap-1">
                   <p className="text-sm">
                     <strong className="font-semibold">{text.updates[update.state]}</strong>
-                    <span className="text-faint"> · {formatTime(update.at)}</span>
+                    <span className="font-mono text-faint"> · {formatTime(update.at)}</span>
                   </p>
                   {update.body.split(/\n\s*\n/).map((paragraph, index) => (
                     <p key={index} className="text-sm whitespace-pre-line text-muted-foreground">

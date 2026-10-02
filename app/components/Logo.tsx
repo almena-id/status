@@ -1,6 +1,6 @@
 import { cn } from "cn";
 
-/** The Almena mark: three nodes and the links between them, in the brand colour (violet, the status page's identity). */
+/** The Almena mark: three nodes and the links between them, in the brand colour (cyan, the status page's identity). */
 export function Logo({
   size = 32,
   title,

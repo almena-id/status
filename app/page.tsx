@@ -92,7 +92,7 @@ export default async function StatusPage({ searchParams }: PageProps<"/">) {
         )}
       >
         <Icon className="size-6 flex-none" aria-hidden />
-        <span className="flex-1">{copy.overall[overall]}</span>
+        <span className="flex-1 font-brand">{copy.overall[overall]}</span>
         <span className="text-sm font-normal opacity-85">
           {copy.home.updated.replace("{time}", formatTime(status.updatedAt))}
         </span>
@@ -148,7 +148,7 @@ export default async function StatusPage({ searchParams }: PageProps<"/">) {
                     </div>
                     <div className="flex items-center gap-3">
                       {resource.latency !== null && !["major", "unknown"].includes(resource.state) && (
-                        <span className="text-xs text-faint tabular-nums">
+                        <span className="font-mono text-xs text-faint tabular-nums">
                           {copy.bar.latency.replace("{value}", String(resource.latency))}
                         </span>
                       )}
@@ -163,7 +163,7 @@ export default async function StatusPage({ searchParams }: PageProps<"/">) {
                       .replace("{days}", String(historyDays))}
                     incidentTitles={titles}
                   />
-                  <p className="text-right text-xs text-muted-foreground tabular-nums">
+                  <p className="text-right font-mono text-xs text-muted-foreground tabular-nums">
                     {uptime === null ? copy.bar.noData : copy.bar.uptime.replace("{value}", uptime)}
                   </p>
                 </div>
@@ -222,7 +222,7 @@ function FilterLink({
     >
       <span className={cn("size-2 rounded-full", stateBackground[state])} aria-hidden />
       {label}
-      {count !== undefined && <span className="text-xs text-faint tabular-nums">{count}</span>}
+      {count !== undefined && <span className="font-mono text-xs text-faint tabular-nums">{count}</span>}
     </Link>
   );
 }

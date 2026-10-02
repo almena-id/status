@@ -51,11 +51,15 @@ finishing.
   zone.
 - Always dark: `<html class="dark">`, no theme selector; `app/globals.css`
   has only the dark palette.
-- Violet is the status page's identity (the catalog is blue, the registry and
+- Cyan is the status page's identity (the catalog is blue, the registry and
   the wallet orange), leaving the states their colours (`--state-*`: green,
   amber, orange, red, blue). `app/globals.css`
   holds only the theme and is the only place a colour is written
   (`app/icon.svg` aside).
+- Typefaces, self-hosted with `next/font` in `app/layout.tsx`: Chakra Petch
+  (`font-brand`: headings, the wordmark, the overall state), Inter
+  (`font-sans`: the interface), JetBrains Mono (`font-mono`: figures and
+  times).
 - The interface is shadcn/ui (`components.json`, Radix base), copied from the
   catalog with its Almena variants: components in `app/components/ui` (add
   more with `npx shadcn add <name>`, the CLI pinned in devDependencies),
