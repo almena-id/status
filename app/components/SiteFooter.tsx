@@ -16,6 +16,13 @@ export function SiteFooter() {
             {copy.footer.site}
           </a>{" "}
           ·{" "}
+          <a
+            href="https://github.com/almena-id/status"
+            className="hover:text-foreground hover:underline"
+          >
+            GitHub
+          </a>{" "}
+          ·{" "}
           <a href="/api/status.json" className="hover:text-foreground hover:underline">
             {copy.footer.feed}
           </a>
