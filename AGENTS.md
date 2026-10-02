@@ -10,7 +10,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 # status
 
-The status page of the Almena Network, `https://status.almena.id`
+The status page of Almena ID, `https://status.almena.id`
 (`NEXT_PUBLIC_STATUS_WEB_URL`): whether each service of the network works
 now and how it did over the last 90 days, plus the incidents and maintenance
 written by hand. Nobody signs in here. Everything is written in English, and

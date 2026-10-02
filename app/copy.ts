@@ -5,9 +5,9 @@ import type { Overall, State } from "./lib/status";
 /** Every text the page shows. The page is in English only. */
 export const copy = {
   app: { name: "Almena Status" },
-  footer: { rights: "Almena Network", site: "almena.id", feed: "JSON" },
+  footer: { rights: "Almena ID", site: "almena.id", feed: "JSON" },
   home: {
-    title: "Almena Network status",
+    title: "Almena ID status",
     lead: "Whether each service of the network works right now, and how it has done over the last {days} days.",
     updated: "Updated {time}",
     filter: "Filter by service type",

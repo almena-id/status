@@ -1,6 +1,6 @@
 # almena-status
 
-The status page of the Almena Network, published at `https://status.almena.id`: whether each service of the network — the identity domain, mediators, APIs, agents and portals, whether Almena runs them or a third party provides them for public use — works right now, how it did over the last 90 days, and the incidents and maintenance announced by hand. In English, always dark. Built with [Next.js](https://nextjs.org) 16 (App Router), React 19, TypeScript and Tailwind CSS 4.
+The status page of Almena ID, published at `https://status.almena.id`: whether each service of the network — the identity domain, mediators, APIs, agents and portals, whether Almena runs them or a third party provides them for public use — works right now, how it did over the last 90 days, and the incidents and maintenance announced by hand. In English, always dark. Built with [Next.js](https://nextjs.org) 16 (App Router), React 19, TypeScript and Tailwind CSS 4.
 
 It depends on nothing it watches: it probes the platform's public names itself, every minute, and keeps the history in its own SQLite database. Run it away from the platform (another host or provider), so that it stays up, and sees the outage, when the platform does not.
 
