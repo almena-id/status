@@ -22,6 +22,15 @@ task health  # {"status":"ok","version":"dev"}
 
 Every merge into `main` publishes the image `ghcr.io/almena-id/status` (amd64 and arm64) with a `year.month.sequence` version (e.g. `2026.10.1`, the sequence restarting each month), also tagged `latest` and `sha-<commit>`; the commit gets the git tag `v<version>`. Run it with `config/` and `incidents/` mounted over `/app/config` and `/app/incidents`, and a volume on `/data`, as [compose.yml](compose.yml) does.
 
+To run that published image (`latest`) in production, from this checkout:
+
+```bash
+task prod:up    # pulls ghcr.io/almena-id/status:latest and starts it on port 3200
+task prod:down  # stops it; the history volume is kept
+```
+
+[compose-prod.yml](compose-prod.yml) holds every value it needs: it reads nothing from `.env` or the environment, so change the values there.
+
 ## What is watched
 
 [config/resources.json](config/resources.json), read on every use (Docker mounts the `config` folder): adding a service, Almena's or a third party's, is adding an entry.

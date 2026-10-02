@@ -84,6 +84,16 @@ tasks:
     cmds:
       - docker compose down
 
+  prod:up:
+    desc: Start the published image (latest) in production with compose-prod.yml (detached) and wait until it is healthy
+    cmds:
+      - docker compose --file compose-prod.yml up --detach --wait
+
+  prod:down:
+    desc: Stop and remove the production containers (the history volume is kept)
+    cmds:
+      - docker compose --file compose-prod.yml down
+
   logs:
     desc: Follow the status page's container logs
     cmds:
